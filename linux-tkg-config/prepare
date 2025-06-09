@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# set -x
+
 # List of kernels that are maintained upstream
 _current_kernels=("6.15" "6.14" "6.12" "6.6" "6.1" "5.15" "5.10" "5.4")
 
@@ -310,7 +312,10 @@ _set_kernel_version() {
       _default_index="1"
     fi
 
-    _prompt_from_array  "${_kernel_fullver_list[@]}"
+    # _prompt_from_array  "${_kernel_fullver_list[@]}"
+    
+    # always use first index whether rc/stable
+    _selected_value="${_kernel_fullver_list[0]}"
 
     if [[ "${_selected_value}" == Another* ]]; then
       msg2 "Which EOL kernel version do you want to install?"
